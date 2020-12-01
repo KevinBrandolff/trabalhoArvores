@@ -21,7 +21,11 @@ void pos_ordem (Node *raiz);
 
 //int buscar (Node *raiz, int v);
 
-void removerMaior(Node *raiz, int maiorN);
+int removerMaior(Node *raiz, int maiorN);
+
+int removerMenor(Node *raiz, int maiorN);
+
+void imprime_decrescente (Node *raiz);
 
 Node *remover (Node *raiz, int v);
 

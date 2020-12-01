@@ -30,26 +30,26 @@ void inOrder(Node *raiz){
     }
 }
 
-int removerMaior(Node *raiz, maiorN){
+int removerMaior(Node *raiz, int maiorN){
     if (raiz != NULL){
        if(raiz->valor > maiorN){
        		maiorN = raiz->valor;
 	   }
-       removerMaior (raiz->esq);
-       removerMaior (raiz->dir);
+       removerMaior (raiz->esq, maiorN);
+       removerMaior (raiz->dir, maiorN);
 
     }
     
     return maiorN;
 }
 
-int removerMenor(Node *raiz, menorN){
+int removerMenor(Node *raiz, int menorN){
     if (raiz != NULL){
-       if(raiz->valor > menorN){
+       if(raiz->valor < menorN){
        		menorN = raiz->valor;
 	   }
-       removerMenor (raiz->esq);
-       removerMenor (raiz->dir);
+       removerMenor (raiz->esq, menorN);
+       removerMenor (raiz->dir, menorN);
 
     }
     
@@ -73,18 +73,21 @@ void pos_ordem (Node *raiz){
     }
 }
 
-//int buscar (Node *raiz, int v){
-    if(raiz==NULL){
-        return 0;
-    }
-    else if(v < raiz->valor){
-        return buscar(raiz->esq,v);
-    }
-    else if(v > raiz->valor){
-        return buscar(raiz->dir,v);
+int min (Node *raiz){
+    if( raiz->esq != NULL){
+        return min(raiz->esq);
     }
     else{
-        return 1;
+         return raiz->valor;
+    }
+}
+
+int max (Node *raiz){
+    if (raiz->dir != NULL){
+        return max(raiz->dir);
+    }
+    else{
+        return raiz->valor;
     }
 }
 
